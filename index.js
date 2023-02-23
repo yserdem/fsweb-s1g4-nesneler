@@ -15,8 +15,13 @@ const serpmeKahvalti = {isim: "Serpme Kahvaltı", fiyat: 16, kategori:"Kahvaltı
 */
 
 
-function MenuElemaniOlustur(/*Kodlar buraya*/){
-	/*Kodlar buraya*/
+function MenuElemaniOlustur(arg0, arg1, arg2){
+	let yeniEleman = {
+		isim: arg0,
+		fiyat: arg1,
+		kategori: arg2,
+	}
+	return yeniEleman;
 }
 
 
@@ -30,7 +35,9 @@ function MenuElemaniOlustur(/*Kodlar buraya*/){
 	
 	Örnek: MenuElemaniOlustur("Karışık Pizza",5,"Pizzalar") şunu döndürür: {isim:"Karışık Pizza",fiyat:5,kategori:"Pizzalar"}
 */
-
+console.log(MenuElemaniOlustur("Karışık Pizza",5,"Pizzalar"));
+console.log(MenuElemaniOlustur("Peynirli Pizza",3,"Pizzalar"));
+console.log(MenuElemaniOlustur("Mantarlı Pizza",3,"Pizzalar"));
 
 
 /* Görev 2: 
@@ -50,9 +57,18 @@ const burger = {
 	isim: "Burger", 
 	fiyat: 18, 
 	kategori: "Öğle Yemeği", 
-
+	indirim: function (arg0) {
+		const indirim025 = ['öğretmen','öğrenci'];
+		const indirim010 = ['diğer'];
+		if (indirim025.includes(arg0)) {
+			var yeniFiyat = burger.fiyat * 0.75;
+		} else if (indirim010.includes(arg0)) {
+			var yeniFiyat = burger.fiyat * 0.90;
+		}
+		return yeniFiyat;
+	}
 }
-
+console.log(burger.indirim('diğer'));
 
 
 ///////////////Değerlendirmeler (MVP)///////////////////
@@ -71,7 +87,7 @@ const degerlendirmeler = [
 	Yukarıdaki degerlendirmeler dizisini(array) kullanarak:
 	1. Sadece Ahmet'in geribildirimini konsolda görüntüleyin - fonksiyona gerek yok
 */
-
+console.log(degerlendirmeler[5].geribildirim)
 
 
 /*  Görev 4 (ototest yok):  
@@ -80,7 +96,8 @@ const degerlendirmeler = [
 	2. degerlendirmeler dizisini konsolda görüntüleyerek çalışmanızı kontrol edin
 */
 
-
+degerlendirmeler[7].geribildirim = "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
+console.log(degerlendirmeler[7].geribildirim)
 
 /*  Görev 5: 
 	isim, puan, geribildirim'i içeren bir değerlendirme nesnesi oluşturup, yeni değerlendirmeyi mevcut dizinin(array) sonuna ekleyip sonuç dizisini döndüren bir fonksiyon tanımlayın. 
@@ -94,9 +111,14 @@ const degerlendirmeler = [
 */
 
 
-function DegerledirmeEkle(/*Kodlar buraya */){
-	/*Kodlar buraya */
-	
+function DegerledirmeEkle(argDizi, argIsim, argPuan, argGeribildirim){
+	let newObj = {
+		isim: argIsim,
+		puan: argPuan,
+		geribildirim: argGeribildirim
+	}
+	argDizi.push(newObj);
+	return argDizi;
 }
 
 
@@ -112,8 +134,8 @@ function DegerledirmeEkle(/*Kodlar buraya */){
 */
 
 
-function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
+function AnahtardanDegerlendirmeAl(argDizi, argKey) {
+	return argDizi[argKey].isim + ' isimli kişi ' + argDizi[argKey].puan + ' puan verdi ve şunları yazdı: ' + argDizi[argKey].geribildirim;
 
 }
 
@@ -132,8 +154,8 @@ function AnahtardanDegerlendirmeAl(/*Kodlar buraya*/) {
 */
 
 
-function SonDegerlendirmeyiAl(/*Kodlar buraya*/) {
-	/*Kodlar buraya*/
+function SonDegerlendirmeyiAl(argDizi) {
+	return argDizi[argDizi.length-1].isim + ' isimli kişi ' + argDizi[argDizi.length-1].puan + ' puan verdi ve şunları yazdı: ' + argDizi[argDizi.length-1].geribildirim;
 } 
 
 
