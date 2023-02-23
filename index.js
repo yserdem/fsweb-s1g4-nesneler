@@ -15,7 +15,7 @@ const serpmeKahvalti = {isim: "Serpme Kahvaltı", fiyat: 16, kategori:"Kahvaltı
 */
 
 
-function MenuElemaniOlustur(arg0, arg1, arg2){
+function MenuElemaniOlustur(arg0, arg1, arg2) {
 	let yeniEleman = {
 		isim: arg0,
 		fiyat: arg1,
@@ -111,7 +111,7 @@ degerlendirmeler[7].geribildirim = "bu mekan bir harika dostum, yine de garsonun
 */
 
 
-function DegerledirmeEkle(argDizi, argIsim, argPuan, argGeribildirim){
+function DegerledirmeEkle(argDizi, argIsim, argPuan, argGeribildirim) {
 	let newObj = {
 		isim: argIsim,
 		puan: argPuan,
@@ -234,7 +234,7 @@ function arabaYapici(argKM) {
 	}
 	return araba;
 }
-console.log(arabaYapici(10).sürüs(30))   
+console.log(typeof arabaYapici(10).sürüs(30).toString())   
 
 
 
