@@ -87,7 +87,7 @@ const degerlendirmeler = [
 	Yukarıdaki degerlendirmeler dizisini(array) kullanarak:
 	1. Sadece Ahmet'in geribildirimini konsolda görüntüleyin - fonksiyona gerek yok
 */
-console.log(degerlendirmeler[5].geribildirim)
+
 
 
 /*  Görev 4 (ototest yok):  
@@ -97,7 +97,7 @@ console.log(degerlendirmeler[5].geribildirim)
 */
 
 degerlendirmeler[7].geribildirim = "bu mekan bir harika dostum, yine de garsonun gülümsememesinden puan kırdım"
-console.log(degerlendirmeler[7].geribildirim)
+
 
 /*  Görev 5: 
 	isim, puan, geribildirim'i içeren bir değerlendirme nesnesi oluşturup, yeni değerlendirmeyi mevcut dizinin(array) sonuna ekleyip sonuç dizisini döndüren bir fonksiyon tanımlayın. 
@@ -176,8 +176,14 @@ function SonDegerlendirmeyiAl(argDizi) {
 	]
 */
 
-function PuanaGoreDegerlendirmeAl(/* Kodlar buraya */) {
-    /* Kodlar buraya */
+function PuanaGoreDegerlendirmeAl(argDizi, argPuan) {
+	let newArray = [];
+    for (let i = 0; i < argDizi.length; i++) {
+		if (argDizi[i].puan >= argPuan && argDizi[i].puan <= argPuan + 0.9 ) {
+			newArray.push(argDizi[i]);
+		}
+	}
+	return newArray;
 }
 
 
@@ -188,10 +194,17 @@ function PuanaGoreDegerlendirmeAl(/* Kodlar buraya */) {
 	
 */
 
-function UzunDegerlendirmeleriAl(/* Kodlar buraya */) {
-    /* Kodlar buraya */
+function UzunDegerlendirmeleriAl(argDizi) {
+    let newArray = [];
+	for (let i = 0; i < argDizi.length; i++) {
+		let bölünmüş = argDizi[i]["geribildirim"].split(" ");
+		if (bölünmüş.length > 15) {
+			newArray.push(argDizi[i]);
+		}
+	}
+	return newArray;
 }
-
+console.log(UzunDegerlendirmeleriAl(degerlendirmeler))
 
 /*  BONUS 3:  
 	Bu ek görevde degerlendirmeler dizisi kullanılmayacak!  Bu görevde kendi nesnenizi yaratmanız gerekmektedir.
@@ -211,10 +224,18 @@ function UzunDegerlendirmeleriAl(/* Kodlar buraya */) {
 */
 
 
-function arabaYapici(/* Kodlar buraya */) {
-    /* Kodlar buraya */
-    
+function arabaYapici(argKM) {
+    let araba = {
+		sayac: argKM,
+		sürüs: function (gidilenMesafe) {
+			araba.sayac = araba.sayac + gidilenMesafe;
+			return araba.sayac;
+		}
+	}
+	return araba;
 }
+console.log(arabaYapici(10).sürüs(30))   
+
 
 
 /*  Buradan aşağıdaki kodları değiştirmeyin lütfen */
